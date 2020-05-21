@@ -22,5 +22,7 @@ for i in $(echo ${appList[*]})
 
 echo -e "\nNow installing $counter apps\n" 
 apt-get install -y $(echo ${appList[*]})
+ 
+echo $(cat ./apps.txt) $(pwd)
 
 
