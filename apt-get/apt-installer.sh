@@ -1,11 +1,9 @@
 #! /bin/bash
 
-#Obtaining apps/packages list from txt file
-
-appList=($(cat ./apps.txt))
+appList=($(cat ./apps.txt)) #Obtaining apps/packages list from txt file
 
 #Listing info about apps
-
+apt-get update
 echo -e "\nNumber of apps to install: ${#appList[@]} \n"
 echo -e "Apps to install: ${appList[*]}\n"
 echo -e "Apt info:\n"
@@ -23,6 +21,6 @@ for i in $(echo ${appList[*]})
 echo -e "\nNow installing $counter apps\n" 
 apt-get install -y $(echo ${appList[*]})
  
-echo $(cat ./apps.txt) $(pwd)
+apt-get update 
 
 
