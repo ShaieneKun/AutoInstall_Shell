@@ -13,4 +13,13 @@ cd $aptAppsFolder
 chmod o+x $aptAppsInstaller
 ./$aptAppsInstaller
 cd "$mainPath" 
-pwd
+
+#Installer using flatpak
+flatpakAppsFolder=$(find ./ -type d -name flatpak) 
+flatpakAppsInstaller="flatpak-installer.sh"
+#Installing from distro repositories (apt-get)
+
+cd $flatpakAppsFolder
+chmod o+x $flatpakAppsInstaller
+./$flatpakAppsInstaller
+cd "$mainPath" 
