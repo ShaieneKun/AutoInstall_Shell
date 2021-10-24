@@ -8,6 +8,6 @@ if not flatpak_apps:
     print(f"Flatpaks a serem instalados: {flatpak_apps}")
     
     for app in flatpak_apps:
-        subprocess.run(["flatpak", "install", "-y", "flathub", app])
+        subprocess.run(f"flatpak install -y flathub {app}".split())
 
-subprocess.run(["flatpak", "upgrade", "-y"])
+subprocess.run("flatpak upgrade -y".split())
