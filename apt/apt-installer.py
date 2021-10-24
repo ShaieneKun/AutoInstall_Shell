@@ -24,7 +24,7 @@ def handle_apt_apps(apt_apps: 'list[str]'):
     print("Installing apps...")
     
     for app in apt_apps:
-        app = app.replace("\n", "")
+        app = app.replace("\n", "").replace("'", "")
         subprocess.run(["apt", "install", "-y", app])
 
 subprocess.run(["apt", "update"])
