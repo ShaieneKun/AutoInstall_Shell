@@ -8,3 +8,4 @@ lutris
 mangohud
 goverlay
 grsync
+grub-customizer
