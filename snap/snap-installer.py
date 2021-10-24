@@ -7,6 +7,6 @@ if not snap_apps:
     print(f"snaps a serem instalados: {snap_apps}")
     
     for app in snap_apps:
-        subprocess.run(["snap","install", app])
+        subprocess.run(f"snap install {app}".split())
 
-subprocess.run(["snap", "refresh"])
+subprocess.run(f"snap refresh".split())
