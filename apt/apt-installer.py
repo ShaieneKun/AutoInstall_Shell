@@ -1,38 +1,35 @@
 #!/bin/python3
 import subprocess
 
-with open("apt-apps.txt", "r") as apt_apps_file:
-    apt_apps: 'list[str]' = apt_apps_file.readlines()
+import utils
 
-with open("apt-ppas.txt", "r") as apt_ppas_file:
-    apt_ppas: 'list[str]' = apt_ppas_file.readlines()
+apt_apps: "list[str]" = utils.list_from_file("apt-apps.txt")
+apt_ppas: "list[str]" = utils.list_from_file("apt-ppas.txt")
 
 def handle_ppas(ppas: 'list[str]'):
-    print(f"\nNumber of ppas: {len(apt_apps)}")
-    print(f"\nList of packages: {apt_apps}")
+    print(f"\nNumber of ppas: {len(ppas)}")
+    print(f"List of ppas: {ppas}\n")
 
     for ppa in ppas:
-        ppa = ppa.replace("\n", "")
-        subprocess.run(["add-apt-repository", "-y", ppa])
+        subprocess.run(f"add-apt-repository -y {ppa}".split())
         
 def handle_apt_apps(apt_apps: 'list[str]'):
     print(f"\nNumber of packages: {len(apt_apps)}")
-    print(f"\nList of packages: {apt_apps}")
+    print(f"List of packages: {apt_apps}\n")
 
-    subprocess.run(["apt", "list", *apt_apps])
+    subprocess.run(f"apt list".split() + [*apt_apps])
 
     print("Installing apps...")
     
-    for app in apt_apps:
-        app = app.replace("\n", "").replace("'", "")
-        subprocess.run(["apt", "install", "-y", app])
+    subprocess.run("apt install -y".split() + [*apt_apps])
 
-subprocess.run(["apt", "update"])
+subprocess.run("apt update".split())
 
 if apt_ppas:
     handle_ppas(apt_ppas)
 
 if apt_apps:
-    handle_ppas(apt_apps)
+    handle_apt_apps(apt_apps)
     
-subprocess.run(["apt", "upgrade", "-y"])
+subprocess.run("apt upgrade -y".split())
+subprocess.run("apt auto-remove -y".split())
