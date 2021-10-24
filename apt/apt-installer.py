@@ -12,7 +12,7 @@ def handle_ppas(ppas: 'list[str]'):
     print(f"\nList of packages: {apt_apps}")
 
     for ppa in ppas:
-        ppa = ppa.replace("'", "")
+        ppa = ppa.replace("\n", "")
         subprocess.run(["add-apt-repository", "-y", ppa])
         
 def handle_apt_apps(apt_apps: 'list[str]'):
@@ -22,9 +22,10 @@ def handle_apt_apps(apt_apps: 'list[str]'):
     subprocess.run(["apt", "list", *apt_apps])
 
     print("Installing apps...")
-    apt_apps = [app.replace("'", "") for app in apt_apps]
     
-    subprocess.run(["apt", "install", "-y", *apt_apps])
+    for app in apt_apps:
+        app = app.replace("\n", "")
+        subprocess.run(["apt", "install", "-y", app])
 
 subprocess.run(["apt", "update"])
 
