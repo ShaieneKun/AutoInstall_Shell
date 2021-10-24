@@ -1,1 +1,10 @@
-tree screenfetch cmatrix git
+tree
+screenfetch
+cmatrix
+git
+synaptic
+timeshift
+lutris
+mangohud
+goverlay
+grsync

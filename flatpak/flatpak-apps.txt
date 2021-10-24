@@ -1,1 +1,10 @@
-Telegram Elisa
+org.telegram.desktop
+com.bitwarden.desktop
+com.github.tchx84.Flatseal
+com.transmissionbt.Transmission
+net.cozic.joplin_desktop
+org.godotengine.Godot
+org.kde.krita
+org.onlyoffice.desktopeditors
+org.srb2.SRB2
+org.srb2.SRB2Kart
