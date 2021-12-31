@@ -13,3 +13,4 @@ mangohud
 goverlay
 grsync
 grub-customizer
+radeon-profile
