@@ -1,14 +1,22 @@
 #!/bin/python3
 import subprocess
 
+# Shell commands
+
+install_location: str = "user"  # TODO add option to pass "system" as argument
+add_flathub_remote = f"flatpak remote-add --{install_location} --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"
+
+
 with open("flatpak-apps.txt", "r") as flatpak_apps_file:
-    flatpak_apps: 'list[str]' = flatpak_apps_file.readlines()
-    flatpak_apps = [ app.replace("\n", "") for app in flatpak_apps ]
+    flatpak_apps: list[str] = flatpak_apps_file.readlines()
+    flatpak_apps: list[str] = [app.replace("\n", "") for app in flatpak_apps]
 
 if flatpak_apps:
-    print(f"Flatpaks a serem instalados: {flatpak_apps}")
-    
+    print(f"Flatpaks to install: {flatpak_apps}")
+
+    subprocess.run(add_flathub_remote.split())
+
     for app in flatpak_apps:
-        subprocess.run(f"flatpak install -y flathub {app}".split())
+        subprocess.run(f"flatpak install --{install_location} -y flathub {app}".split())
 
 subprocess.run("flatpak upgrade -y".split())
