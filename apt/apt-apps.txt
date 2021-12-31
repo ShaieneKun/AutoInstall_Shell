@@ -2,6 +2,10 @@ tree
 screenfetch
 cmatrix
 git
+ssh
+gcc
+make
+node-typescript
 synaptic
 timeshift
 lutris
