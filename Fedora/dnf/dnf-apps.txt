@@ -1,0 +1,10 @@
+tree
+cmatrix
+pop-shell
+gnome-console
+steam-devices
+howdy
+rsms-inter-fonts
+jetbrains-mono-fonts
+dnf-plugins-core
+adw-gtk3-theme

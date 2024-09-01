@@ -3,7 +3,7 @@ import subprocess
 
 # Shell commands
 
-install_location: str = "user"  # TODO add option to pass "system" as argument
+install_location: str = "system"  # TODO add option to pass "system" as argument
 add_flathub_remote = f"flatpak remote-add --{install_location} --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"
 
 
