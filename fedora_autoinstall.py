@@ -42,7 +42,6 @@ dnf_installer.main(dnf_apps,
 
 print('\nFinished the "dnf-installer.py" script...')
 
-
 # dnf custom installs
 # flatpak installer
 # flatpak extra-setups

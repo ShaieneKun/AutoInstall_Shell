@@ -2,6 +2,7 @@
 import subprocess
 import utils
 
+
 def dnf_installer_test():
     print("success")
 
@@ -11,8 +12,13 @@ def handle_copr(copr_repos: 'list[str]'):
     print(f"\nNumber of copr repos: {len(copr_repos)}")
     print(f"List of copr repos: {copr_repos}\n")
 
+    # Adding Copr Plugin
+    subprocess.run("sudo dnf install -y dnf-plugins-core".split())
+
     for copr_repo in copr_repos:
         subprocess.run(f"sudo dnf copr enable -y {copr_repo}".split())
+
+    subprocess.run("sudo dnf update -y --refresh".split())
 
 
 def handle_dnf_apps(dnf_apps: 'list[str]'):
@@ -22,7 +28,7 @@ def handle_dnf_apps(dnf_apps: 'list[str]'):
 
     # subprocess.run(f"dnf list".split() + [*dnf_apps])
 
-    print("Installing apps...")
+    print("Installing dnf packages...")
 
     subprocess.run("sudo dnf install -y".split() + [*dnf_apps])
 
@@ -42,7 +48,8 @@ def main(
     dnf_copr: "list[str]",
     dnf_apps_remove: "list[str]",
 ):
-    subprocess.run("dnf update".split())
+    print("Running system updates")
+    subprocess.run("dnf update -y".split())
 
     if dnf_copr:
         handle_copr(dnf_copr)
@@ -53,7 +60,7 @@ def main(
     if dnf_apps_remove:
         handle_dnf_apps_remove(dnf_apps_remove)
 
-    subprocess.run("sudo dnf upgrade -y".split())
+    subprocess.run("sudo dnf update -y".split())
     subprocess.run("sudo dnf autoremove -y".split())
 
 
