@@ -21,26 +21,40 @@ if (not ("Fedora" in ls and "fedora-autoinstall.py")):
     sys.exit(1)
 
 fedora_scripts_path = "./Fedora/"
+
 sp.run(f"chmod +x -R {fedora_scripts_path}".split())
 
 # dnf installer
+fedora_dnf_scripts_path = f"{fedora_scripts_path}dnf/"
 
 dnf_apps: "list[str]" = utils.list_from_file(
-    f"{fedora_scripts_path}dnf/dnf-apps.txt")
+    f"{fedora_dnf_scripts_path}dnf-apps.txt")
 dnf_copr: "list[str]" = utils.list_from_file(
-    f"{fedora_scripts_path}dnf/dnf-copr.txt")
+    f"{fedora_dnf_scripts_path}dnf-copr.txt")
 dnf_apps_remove: "list[str]" = utils.list_from_file(
-    f"{fedora_scripts_path}dnf/dnf-apps-remove.txt")
+    f"{fedora_dnf_scripts_path}dnf-apps-remove.txt")
 
-print('\nRunning the "dnf-installer.py" script...')
+print('\nStarting the "dnf-installer.py" script...')
 
-dnf_installer.main(dnf_apps,
-                   dnf_copr,
-                   dnf_apps_remove)
-
-# sp.run(f"{fedora_scripts_path}dnf/dnf-installer.py".split())
+# dnf_installer.main(dnf_apps,
+#                    dnf_copr,
+#                    dnf_apps_remove)
 
 print('\nFinished the "dnf-installer.py" script...')
+
+print('\nStarting the custom dnf scripts...')
+
+dnf_custom_scripts: list[str] = os.listdir(f"{fedora_dnf_scripts_path}custom_installs/")
+
+for script in dnf_custom_scripts:
+    print(f'\nStarting the custom dnf script: {script}')
+
+    sp.run(f"{fedora_dnf_scripts_path}custom_installs/{script}")
+
+    print(f'\nFinished the custom dnf script: {script}')
+
+print('\nFinished the custom dnf scripts...')
+
 
 # dnf custom installs
 # flatpak installer
