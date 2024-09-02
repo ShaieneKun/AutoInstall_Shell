@@ -1,2 +1,4 @@
 *.pyc
 docker-desktop*.rpm
+Graphite*
+*.zip
