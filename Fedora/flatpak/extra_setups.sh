@@ -1,3 +1,5 @@
+#!/bin/bash
+
 flatpak --user override --filesystem=/home/$USER/.icons/:ro
 sudo flatpak override --filesystem=/usr/share/icons/:ro
 
