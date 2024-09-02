@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-import sys, os, subprocess as sp
+import sys
+import os
+import subprocess as sp
 import utils
 from Fedora.dnf import dnf_installer
 
@@ -14,7 +16,7 @@ It runs custom scripts to install programs such as Docker Desktop and VS Code
 
 ls = os.listdir()
 
-if (not ("Fedora" in  ls and "fedora-autoinstall.py")):
+if (not ("Fedora" in ls and "fedora-autoinstall.py")):
     print("Execute the program in the same dir as it is stored")
     sys.exit(1)
 
@@ -23,13 +25,18 @@ sp.run(f"chmod +x -R {fedora_scripts_path}".split())
 
 # dnf installer
 
-dnf_apps: "list[str]" = utils.list_from_file(f"{fedora_scripts_path}dnf/dnf-apps.txt")
-dnf_copr: "list[str]" = utils.list_from_file(f"{fedora_scripts_path}dnf/dnf-copr.txt")
-dnf_apps_remove: "list[str]" = utils.list_from_file(f"{fedora_scripts_path}dnf/dnf-apps-remove.txt")
+dnf_apps: "list[str]" = utils.list_from_file(
+    f"{fedora_scripts_path}dnf/dnf-apps.txt")
+dnf_copr: "list[str]" = utils.list_from_file(
+    f"{fedora_scripts_path}dnf/dnf-copr.txt")
+dnf_apps_remove: "list[str]" = utils.list_from_file(
+    f"{fedora_scripts_path}dnf/dnf-apps-remove.txt")
 
 print('\nRunning the "dnf-installer.py" script...')
 
-dnf_installer.dnf_installer_test()
+dnf_installer.main(dnf_apps,
+                   dnf_copr,
+                   dnf_apps_remove)
 
 # sp.run(f"{fedora_scripts_path}dnf/dnf-installer.py".split())
 
