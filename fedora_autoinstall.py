@@ -3,6 +3,7 @@
 import sys
 import os
 import subprocess as sp
+import time
 import utils
 from Fedora.dnf import dnf_installer
 from Fedora.flatpak import flatpak_installer
@@ -76,12 +77,15 @@ It also setups fonts and other gnome shell configurations
 It runs custom scripts to install programs such as Docker Desktop and VS Code
 """)
 
+    time.sleep(6)
     ls = os.listdir()
 
     if (not ("Fedora" in ls and "fedora-autoinstall.py")):
         print("Execute the program in the same dir as it is stored")
         sys.exit(1)
     sp.run(f"chmod +x -R {FEDORA_SCRIPTS_PATH}".split())
+
+    sp.run('sudo echo Root Access granted'.split())
 
     run_dnf_installer()
     dnf_custom_installs()

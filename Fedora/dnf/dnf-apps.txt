@@ -1,6 +1,13 @@
 tree
 cmatrix
 pop-shell
+git
+openssh
+gcc
+make
+mangohud
+goverlay
+gnome-tweak-tool
 gnome-console
 steam-devices
 howdy

@@ -3,7 +3,7 @@
 # gtk3 dark theme
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-# # Fonts and Scaling
+# Fonts and Scaling
 
 sudo fc-cache -f -v
 
@@ -39,3 +39,15 @@ echo "1" | ./install.sh
 cd ..
 
 gsettings set org.gnome.desktop.interface cursor-theme "Graphite-dark-cursors"
+
+# extensions
+
+sudo dnf install -y python3-pip
+pip3 install --upgrade gnome-extensions-cli
+
+gext install blur-my-shell@aunetx
+gext install gsconnect@andyholmes.github.io
+gext install trayIconsReloaded@selfmade.pl
+gext install dash-to-dock@micxgx.gmail.com
+
+gext enable pop-shell
