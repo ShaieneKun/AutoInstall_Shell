@@ -49,5 +49,6 @@ gext install blur-my-shell@aunetx
 gext install gsconnect@andyholmes.github.io
 gext install trayIconsReloaded@selfmade.pl
 gext install dash-to-dock@micxgx.gmail.com
+gext install just-perfection-desktop@just-perfection
 
 gext enable pop-shell
