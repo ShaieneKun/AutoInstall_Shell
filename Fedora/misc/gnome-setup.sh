@@ -2,7 +2,6 @@
 
 customization_path=~/Customization
 mkdir -p $customization_path
-cd $customization_path
 
 # gtk3 dark theme
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
@@ -16,9 +15,7 @@ gsettings set org.gnome.desktop.interface document-font-name 'Inter 15'
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10'
 
 gsettings set org.gnome.desktop.interface font-hinting full
-
 gsettings set org.gnome.desktop.interface font-antialiasing rgba
-
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 sudo fc-cache -f -v
@@ -59,7 +56,7 @@ gext install CoverflowAltTab@palatis.blogspot.com
 gext enable pop-shell
 
 # Wallpaper
-cp ./wallpapers $customization_path
-gsettings get org.gnome.desktop.background picture-uri $customization_path/wallpapers/wp-light-upscaled.png
-gsettings get org.gnome.desktop.background picture-uri-dark $customization_path/wallpapers/wp-dark-upscaled.png
+cp -r "wallpapers" "$customization_path"
+gsettings set org.gnome.desktop.background picture-uri $customization_path/wallpapers/wp-light-upscaled.png
+gsettings set org.gnome.desktop.background picture-uri-dark $customization_path/wallpapers/wp-dark-upscaled.png
 gsettings set org.gnome.desktop.background picture-options "zoom"
