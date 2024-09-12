@@ -62,3 +62,4 @@ gext enable pop-shell
 cp ./wallpapers $customization_path
 gsettings get org.gnome.desktop.background picture-uri $customization_path/wallpapers/wp-light-upscaled.png
 gsettings get org.gnome.desktop.background picture-uri-dark $customization_path/wallpapers/wp-dark-upscaled.png
+gsettings set org.gnome.desktop.background picture-options "zoom"
