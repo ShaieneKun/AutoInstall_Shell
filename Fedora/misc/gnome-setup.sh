@@ -1,5 +1,9 @@
 #!/bin/bash
 
+customization_path=~/Customization
+mkdir -p $customization_path
+cd $customization_path
+
 # gtk3 dark theme
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
@@ -53,3 +57,8 @@ gext install quicksettings-audio-devices-hider@marcinjahn.com
 gext install openbar@neuromorph
 gext install CoverflowAltTab@palatis.blogspot.com
 gext enable pop-shell
+
+# Wallpaper
+cp ./wallpapers $customization_path
+gsettings get org.gnome.desktop.background picture-uri $customization_path/wallpapers/wp-light-upscaled.png
+gsettings get org.gnome.desktop.background picture-uri-dark $customization_path/wallpapers/wp-dark-upscaled.png
