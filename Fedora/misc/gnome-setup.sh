@@ -23,6 +23,18 @@ sudo fc-cache -f -v
 # Other UI Elements
 gsettings set org.gnome.desktop.interface enable-hot-corners true
 
+# Windows settings
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+gsettings set org.gnome.mutter center-new-windows true
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier '<Super>'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Inter Bold 11'
+
+# Keybindings
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right ['<Shift><Control><Super>Right']
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left ['<Shift><Control><Super>Left']
+
+
 # Cursor
 FILE=main.zip
 
@@ -40,6 +52,7 @@ echo "1" | ./install.sh
 cd ..
 
 gsettings set org.gnome.desktop.interface cursor-theme "Graphite-dark-cursors"
+gsettings set org.gnome.desktop.interface cursor-size 32
 
 # extensions
 
