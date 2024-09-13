@@ -66,6 +66,8 @@ gext install dash-to-dock@micxgx.gmail.com
 gext install quicksettings-audio-devices-hider@marcinjahn.com
 gext install openbar@neuromorph
 gext install CoverflowAltTab@palatis.blogspot.com
+gext install burn-my-windows@schneegans.github.com
+gext install compiz-alike-magic-lamp-effect@hermes83.github.com
 gext enable pop-shell
 
 # Wallpaper
